@@ -27,6 +27,7 @@ power_data <- power_data %>%
   filter(dateTime >= as.POSIXct("2007-02-01") & dateTime < as.POSIXct("2007-02-03"))
 
 
+# The following code create plot1 and saves it as .png
 plot1 <- ggplot(power_data, aes(x = Global_active_power)) +
   geom_histogram(binwidth = 0.1, fill = "red", color = "black") +
   labs(
@@ -39,7 +40,7 @@ plot1 <- ggplot(power_data, aes(x = Global_active_power)) +
 ggsave("plot1.png", plot1, width = 6, height = 6, dpi = 80)
 
 
-
+# The following code create plot2 and saves it as .png
 plot2 <- ggplot(power_data, aes(x = dateTime, y = Global_active_power)) +
   geom_line() +
   labs(
@@ -50,7 +51,7 @@ plot2 <- ggplot(power_data, aes(x = dateTime, y = Global_active_power)) +
 
 ggsave("plot2.png", plot2, width = 6, height = 6, dpi = 80)
 
-
+# The following code create plot3 and saves it as .png
 plot3 <- ggplot(power_data, aes(x = dateTime)) +
   geom_line(aes(y = Sub_metering_1, color = "Sub_metering_1")) +
   geom_line(aes(y = Sub_metering_2, color = "Sub_metering_2")) +
@@ -65,7 +66,7 @@ plot3 <- ggplot(power_data, aes(x = dateTime)) +
 ggsave("plot3.png", plot3, width = 6, height = 6, dpi = 80)
 
 
-
+# The following code create plot4 and saves it as .png
 plot4 <- ggplot(power_data, aes(x = dateTime, y = Global_reactive_power)) +
   geom_line() +
   labs(
@@ -77,6 +78,7 @@ plot4 <- ggplot(power_data, aes(x = dateTime, y = Global_reactive_power)) +
 ggsave("plot4.png", plot4, width = 6, height = 6, dpi = 80)
 
 
+# The following code create plot_combined and saves it as .png
 library(patchwork)
 # Combine all plots
 # Combine plots into a 2x2 grid
