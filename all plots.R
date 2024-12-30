@@ -27,6 +27,15 @@ power_data <- power_data %>%
   filter(dateTime >= as.POSIXct("2007-02-01") & dateTime < as.POSIXct("2007-02-03"))
 
 
+# Set global theme for all plots
+theme_set(theme_minimal(base_size = 12) +
+            theme(
+              panel.background = element_rect(fill = "white", color = NA),
+              plot.background = element_rect(fill = "white", color = NA)
+            ))
+
+
+
 # The following code create plot1 and saves it as .png
 plot1 <- ggplot(power_data, aes(x = Global_active_power)) +
   geom_histogram(binwidth = 0.1, fill = "red", color = "black") +
@@ -34,8 +43,7 @@ plot1 <- ggplot(power_data, aes(x = Global_active_power)) +
     title = "Global Active Power",
     x = "Global Active Power (kilowatts)",
     y = "Frequency"
-  ) +
-  theme_minimal()
+  )
 
 ggsave("plot1.png", plot1, width = 6, height = 6, dpi = 80)
 
@@ -46,8 +54,7 @@ plot2 <- ggplot(power_data, aes(x = dateTime, y = Global_active_power)) +
   labs(
     x = "",
     y = "Global Active Power (kilowatts)"
-  ) +
-  theme_minimal()
+  )
 
 ggsave("plot2.png", plot2, width = 6, height = 6, dpi = 80)
 
@@ -60,8 +67,7 @@ plot3 <- ggplot(power_data, aes(x = dateTime)) +
     x = "",
     y = "Energy sub metering",
     color = "Legend"
-  ) +
-  theme_minimal()
+  )
 
 ggsave("plot3.png", plot3, width = 6, height = 6, dpi = 80)
 
@@ -72,8 +78,7 @@ plot4 <- ggplot(power_data, aes(x = dateTime, y = Global_reactive_power)) +
   labs(
     x = "datetime",
     y = "Global Reactive Power"
-  ) +
-  theme_minimal()
+  )
 
 ggsave("plot4.png", plot4, width = 6, height = 6, dpi = 80)
 
